@@ -89,8 +89,8 @@ double SmartNoiseGateAudioProcessor::getTailLengthSeconds() const
 
 int SmartNoiseGateAudioProcessor::getNumPrograms()
 {
-    return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
-                // so this should be at least 1, even if you're not really implementing programs.
+    return 1;   // Keeping this at 1 because some hosts can't handle basic math
+                
 }
 
 int SmartNoiseGateAudioProcessor::getCurrentProgram()
@@ -120,8 +120,7 @@ void SmartNoiseGateAudioProcessor::prepareToPlay (double sampleRate, int samples
 
 void SmartNoiseGateAudioProcessor::releaseResources()
 {
-    // When playback stops, you can use this as an opportunity to free up any
-    // spare memory, etc.
+    // Playback finished. Free up any leftover resources here.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -131,8 +130,7 @@ bool SmartNoiseGateAudioProcessor::isBusesLayoutSupported (const BusesLayout& la
     juce::ignoreUnused (layouts);
     return true;
   #else
-    // This is the place where you check if the layout is supported.
-    // In this template code we only support mono or stereo.
+    //  Only support mono or stereo.
     if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
      && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
@@ -208,7 +206,7 @@ void SmartNoiseGateAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
 //==============================================================================
 bool SmartNoiseGateAudioProcessor::hasEditor() const
 {
-    return true; // (change this to false if you choose to not supply an editor)
+    return true; // 
 }
 
 juce::AudioProcessorEditor* SmartNoiseGateAudioProcessor::createEditor()
@@ -219,14 +217,12 @@ juce::AudioProcessorEditor* SmartNoiseGateAudioProcessor::createEditor()
 //==============================================================================
 void SmartNoiseGateAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
+    // Save the state here. We can just dump raw data, but using a ValueTree or XML is way easier for handling complex parameters.
 }
 
 void SmartNoiseGateAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
+    // Use this method to restore parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
 }
 
