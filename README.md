@@ -4,8 +4,8 @@ Physics-based noise gate plugin for music production, using energy detection ins
 
 ## Screenshot
 
-![SmartNoiseGate Plugin](20260204_033325.png)
-![SmartNoiseGate Plugin](20260204_033311.png)
+![SmartNoiseGate Plugin](20260204_033325.jpg)
+![SmartNoiseGate Plugin](20260204_033311.jpg)
 *Standalone application running successfully on Windows*
 
 ## Features
